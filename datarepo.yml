@@ -1,0 +1,21 @@
+- hosts: datarepo
+  #
+  # Not becoming root (sudo) for now. We'll try to escalete privileges
+  # when needed.
+  tasks:
+  - name: Install vim
+    apt:
+      name: vim
+      state: present
+    become: true
+  - name: set default editor to vim
+    alternatives:
+      name: editor
+      path: /usr/bin/vim.basic
+    become: true
+  - name: Install Java
+    apt:
+      name: openjdk-11-jdk
+      state: present
+    become: true
+    

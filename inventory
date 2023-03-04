@@ -1,0 +1,4 @@
+datarepo    ansible_connection=local
+
+[servers]
+datarepo
