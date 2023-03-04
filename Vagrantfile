@@ -15,7 +15,7 @@ Vagrant.configure("2") do |config|
       vb.cpus = 4
     end
     datarepo.vm.provision :ansible_local do |ansible|
-      ansible.verbose = true
+      ansible.verbose = false
       ansible.install = true
       ansible.limit = "all"
       ansible.inventory_path = "inventory"

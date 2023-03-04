@@ -21,7 +21,12 @@
     state: present
 - name: Create user 'dataverse'
   ansible.builtin.user:
-    name: datarepo
+    name: dataverse
+    group: dataverse
 - name: Set ownership Payara to dataverse user
   ansible.builtin.file:
     path: /usr/local/
+    state: directory
+    recurse: yes
+    owner: dataverse
+  become: yes
