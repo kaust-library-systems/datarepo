@@ -11,7 +11,7 @@ Vagrant.configure("2") do |config|
   config.vm.define "datarepo" do |datarepo|
     datarepo.vm.hostname = "datarepo"
     datarepo.vm.provider :virtualbox do |vb|
-      vb.memory = 8192
+      vb.memory = 4096
       vb.cpus = 4
     end
   end
