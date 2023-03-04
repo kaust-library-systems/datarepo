@@ -18,4 +18,6 @@
       name: openjdk-11-jdk
       state: present
     become: true
-    
+  - name: Tasks related with Payara
+    ansible.builtin.import_tasks:
+      file: tasks/payara.yml

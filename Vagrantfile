@@ -14,5 +14,12 @@ Vagrant.configure("2") do |config|
       vb.memory = 4096
       vb.cpus = 4
     end
+    datarepo.vm.provision :ansible_local do |ansible|
+      ansible.verbose = true
+      ansible.install = true
+      ansible.limit = "all"
+      ansible.inventory_path = "inventory"
+      ansible.playbook = "datarepo.yml"
+    end
   end
 end

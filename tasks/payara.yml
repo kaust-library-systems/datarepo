@@ -1,0 +1,27 @@
+#
+# Install Payara 5 Enterprise server
+# 
+- name: Downloading Payara Server 5.2022.5
+  ansible.builtin.get_url:
+    url: https://s3.eu-west-1.amazonaws.com/payara.fish/Payara+Downloads/5.2022.5/payara-5.2022.5.zip
+    dest: /tmp
+    mode: 0644
+- name: Install unzip
+  ansible.builtin.apt:
+    name: unzip
+    state: present
+  become: true
+- name: Extract Payara to destination directory
+  ansible.builtin.unarchive:
+    src: /tmp/payara-5.2022.5.zip
+    dest: /usr/local/
+- name: Create group 'dataverse'
+  ansible.builtin.group:
+    name: dataverse
+    state: present
+- name: Create user 'dataverse'
+  ansible.builtin.user:
+    name: datarepo
+- name: Set ownership Payara to dataverse user
+  ansible.builtin.file:
+    path: /usr/local/
